@@ -47,7 +47,7 @@ public class PetOwnerTest {
         po.addPet(newPet);
 
         // Then
-        boolean outcome = po.isOwnerOf(newPet);
+        boolean outcome = po.isOwnerOf(newPet); // this test passing is dependent on isOwnerOf passing?
         Assertions.assertTrue(outcome);
     }
 

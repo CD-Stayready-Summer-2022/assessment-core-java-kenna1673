@@ -8,7 +8,10 @@ public class DogTest {
     public void nullaryConstructorTest() {
         // Given
         PetOwner expectedOwner = null;
-        String expectedName = "Dog name";
+        String expectedName = "";
+        // changed to "" based on directions. With the super
+        // constructor this would never match for both cat and dog since the name is
+        // being assigned in pet
         Integer expectedAge = 0;
         Dog dog = new Dog();
 
@@ -45,7 +48,10 @@ public class DogTest {
     @Test
     public void constructorWithAgeTest() {
         // Given
-        String expectedName = "Dog name";
+        String expectedName = "";
+        // changed to "" based on directions. With the super
+        // constructor this would never match for both cat and dog since the name is
+        // being assigned in pet
         Integer expectedAge = Integer.MAX_VALUE;
         Dog dog = new Dog(expectedAge);
 
