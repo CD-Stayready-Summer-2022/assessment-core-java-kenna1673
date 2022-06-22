@@ -2,6 +2,7 @@ package com.codedifferently.assessment01.part02;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class PetOwner {
     private String name;
@@ -13,12 +14,19 @@ public class PetOwner {
     public PetOwner(String name, Pet... pets) {
         this.name = name;
         this.pets = pets;
+        if (pets != null) {
+            for (Pet pet : pets) {
+                pet.setOwner(new PetOwner(name));
+                pet.getOwner().setPets(pets);
+            }
+        }
     }
 
     /**
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
+        pet.setOwner(new PetOwner(name));
         ArrayList<Pet> petsList = new ArrayList<>();
         if (pets == null) {
             pets = new Pet[]{pet};
@@ -43,6 +51,9 @@ public class PetOwner {
      * @return true if I own this pet
      */
     public Boolean isOwnerOf(Pet pet) {
+        if (pet.getOwner() == null) {
+            return false;
+        }
         return pet.getOwner().getName().equals(name);
     }
 
@@ -110,5 +121,17 @@ public class PetOwner {
      */
     public Pet[] getPets() {
         return pets;
+    }
+
+    public void setPets(Pet[] pets) {
+        this.pets = pets;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PetOwner petOwner = (PetOwner) o;
+        return Objects.equals(name, petOwner.name) && Arrays.equals(pets, petOwner.pets);
     }
 }

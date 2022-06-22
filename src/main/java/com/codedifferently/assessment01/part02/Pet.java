@@ -58,8 +58,6 @@ public abstract class Pet implements Animal {
      * @param newPetOwner the new owner of this pet
      * ensure this instance of `Pet` is added to the owner's composite `pets` list
      */
-    // how to add the instance of this pet when you can't instansiate an object of an
-    // abstract class and do not know whether the pet is a cat or dog
     public void setOwner(PetOwner newPetOwner) {
         this.owner = newPetOwner;
     }
